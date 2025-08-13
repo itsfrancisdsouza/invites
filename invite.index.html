@@ -135,11 +135,20 @@
       min-height:48px; transition:.2s transform,.3s box-shadow,.3s background;
       text-decoration:none; color:#fff;
     }
+    .btn svg { flex: 0 0 auto; }
     .btn:active{ transform: translateY(1px); }
     .btn-primary{ background: linear-gradient(180deg, #f9d36f, #e9c561); box-shadow: 0 8px 24px rgba(249,211,111,.35); }
     .btn-primary:hover{ filter: brightness(1.06); }
     .btn-outline{ background: transparent; box-shadow: inset 0 0 0 2px rgba(255,255,255,.2); }
     .btn-outline:hover{ background: rgba(255,255,255,.08); }
+
+    /* WhatsApp green CTA */
+    .btn-whatsapp{
+      background: linear-gradient(180deg, #25D366, #1ebe5a);
+      box-shadow: 0 8px 24px rgba(37,211,102,.35);
+      color:#fff;
+    }
+    .btn-whatsapp:hover{ filter: brightness(1.06); }
 
     .chips{ display:flex; flex-wrap:wrap; gap: var(--space-1); }
     .chip{
@@ -240,7 +249,7 @@
             <div class="icon">📍</div>
             <div class="col">
               <h3> <a href="https://maps.app.goo.gl/puTAt7TPA2TCzvTK7" target="_blank" rel="noopener noreferrer" style="color:#f9d36f; text-decoration:underline;"> Shanuzz Salon Balewadi, Pune </a> </h3>
-              <p>Office No.107, opp. Nandan Pro Biz, Laxman Nagar, Balewadi, Pune 411045</p>
+              <p>Sky View Co.Op. Housing Soc.Ltd, Office No. 107, opp. Nandan Pro Biz, Laxman Nagar, Balewadi, Pune, Maharashtra 411045</p>
           </div>
           </div>
         </div>
@@ -255,7 +264,13 @@
         </div>
 
         <div class="cta">
-            <button class="btn btn-primary" id="btnWhatsApp" aria-label="Share this invite on WhatsApp">🟢 Share on WhatsApp</button>
+            <button class="btn btn-whatsapp" id="btnWhatsApp" aria-label="Share this invite on WhatsApp">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" style="display:block">
+                <path fill="#fff" d="M.5 23.5l1.68-6.15A10.94 10.94 0 011.1 12C1.1 5.77 6.07.8 12.3.8S23.5 5.77 23.5 12 18.53 23.2 12.3 23.2c-1.8 0-3.5-.43-5.01-1.25L.5 23.5zm6.99-3.35c1.41.83 3.03 1.27 4.81 1.27 5.1 0 9.25-4.15 9.25-9.25S17.4 2.92 12.3 2.92 3.05 7.08 3.05 12.17c0 1.78.49 3.37 1.42 4.76l-.9 3.3 3.92-.08z"/>
+                <path fill="#fff" d="M16.87 13.22c-.2-.1-1.2-.6-1.39-.68-.19-.07-.33-.1-.47.1-.14.19-.54.68-.66.82-.12.14-.24.16-.44.06-.2-.1-.85-.31-1.62-.99-.6-.53-1-1.18-1.12-1.37-.12-.19-.01-.3.09-.4.09-.09.2-.24.3-.36.1-.12.14-.2.2-.34.07-.14.03-.26-.02-.37-.05-.1-.47-1.14-.64-1.56-.17-.41-.35-.36-.47-.37l-.4-.01c-.14 0-.36.05-.55.26-.19.2-.73.71-.73 1.72s.75 1.99.86 2.13c.11.14 1.47 2.25 3.56 3.16.5.22.88.35 1.19.45.5.16.95.14 1.31.08.4-.06 1.2-.49 1.37-.96.17-.47.17-.87.12-.96-.05-.09-.18-.14-.38-.24z"/>
+              </svg>
+              <span>Share on WhatsApp</span>
+            </button>
             <button class="btn btn-outline" id="btnCalendar" aria-label="Add this event to your calendar">🗓️ Add to Calendar</button>
           </div>
 
@@ -307,7 +322,7 @@
 Shanuzz is now in Pune — Grand Opening
 Date: Saturday, Aug 24, 12–3 PM
 Venue: Shanuzz Salon Balewadi, Pune
-Invite: https://itsfrancisdsouza.github.io/invites/invite.index.html
+Invite: https://www.shanuzz.com/invite
 
 Perks: coupons, giveaways, snacks & drinks.
 See you there!
@@ -336,40 +351,213 @@ Map: https://maps.app.goo.gl/puTAt7TPA2TCzvTK7`,
       hero.style.transform = 'none';
     }
     
-    /* ========= confetti ============ */
-    (function confettiBurst(){
-      if (reduceMotion) return; // skip entirely if reduced motion is preferred
-      
-      const c = $("#confetti"); const ctx=c.getContext('2d');
-      const DPR = Math.max(1, Math.min(2, window.devicePixelRatio||1));
-      function size(){ c.width = innerWidth*DPR; c.height = innerHeight*DPR; }
+    /* ========= modern golden fireworks ============ */
+    (function modernGoldenFireworks(){
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const c = document.getElementById('confetti');
+      const ctx = c.getContext('2d', { alpha: true });
+      const DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      function size(){
+        c.width = innerWidth * DPR;
+        c.height = innerHeight * DPR;
+        ctx.setTransform(1,0,0,1,0,0);
+        ctx.scale(DPR, DPR);
+      }
       size(); addEventListener('resize', size); addEventListener('orientationchange', size);
-      const N = 140, parts=[];
-      for(let i=0;i<N;i++){
-        parts.push({
-          x: Math.random()*c.width,
-          y: Math.random()*c.height,
-          r: Math.random()*Math.PI*2,
-          s: Math.random()*3+2,
-          sp: Math.random()*2+1,
-          col: ['#f1c40f','#f39c12','#ffd700','#e67e22','#fff3b0'][Math.floor(Math.random()*5)]
-        });
-      }
-      function tick(){
-        ctx.clearRect(0,0,c.width,c.height);
-        for(let p of parts){
-          p.y += p.sp;
-          p.r += 0.02;
-          if(p.y>c.height+40) { p.y=-20; p.x=Math.random()*c.width; }
-          ctx.save();
-          ctx.translate(p.x,p.y); ctx.rotate(p.r);
-          ctx.fillStyle = p.col;
-          ctx.fillRect(-p.s/2, -p.s/2, p.s, p.s*0.6);
-          ctx.restore();
+
+      const golds = ['#f9d36f','#ffd65a','#f1c40f','#e9c561','#ffec9f'];
+      const TAU = Math.PI*2;
+
+      // Utility
+      const rand = (min, max)=> min + Math.random()*(max-min);
+      const pick = arr => arr[(Math.random()*arr.length)|0];
+
+      // Cinematic bokeh (soft floating circles in the background)
+      const bokeh = Array.from({length: 20}, ()=>({
+        x: Math.random()*innerWidth,
+        y: Math.random()*innerHeight*0.7,
+        r: rand(6,18),
+        a: rand(0.06,0.12),
+        s: rand(0.05,0.18),
+      }));
+
+      class Spark {
+        constructor(x,y,angle,speed,life,color,thick=1.2){
+          this.x=x; this.y=y; this.vx=Math.cos(angle)*speed; this.vy=Math.sin(angle)*speed;
+          this.life=life; this.age=0; this.color=color; this.alpha=1;
+          this.gravity=0.03; this.friction=0.996; this.thick=thick;
+          this.trail=[]; this.trailLen=5+(Math.random()*3|0);
+          // slight hue shift per spark for richness
+          this.tint = Math.random()*0.12 - 0.06;
         }
-        requestAnimationFrame(tick);
+        step(dt){
+          this.trail.push([this.x,this.y]);
+          if(this.trail.length>this.trailLen) this.trail.shift();
+          this.age+=dt;
+          this.vx*=this.friction;
+          this.vy=this.vy*this.friction + this.gravity;
+          this.x+=this.vx; this.y+=this.vy;
+          const t=Math.min(1,this.age/this.life);
+          this.alpha = 1 - t*t; // ease-out opacity
+          return this.age<this.life;
+        }
+        draw(ctx){
+          // trail
+          for(let i=0;i<this.trail.length-1;i++){
+            const p0=this.trail[i], p1=this.trail[i+1];
+            const a=(i+1)/this.trail.length * this.alpha * 0.7;
+            ctx.strokeStyle=this.color;
+            ctx.globalAlpha=a;
+            ctx.lineWidth=this.thick;
+            ctx.beginPath(); ctx.moveTo(p0[0],p0[1]); ctx.lineTo(p1[0],p1[1]); ctx.stroke();
+          }
+          // spark head
+          ctx.globalAlpha = this.alpha;
+          ctx.fillStyle = this.color;
+          ctx.beginPath(); ctx.arc(this.x,this.y,this.thick+0.4,0,TAU); ctx.fill();
+
+          // radial bloom
+          const g=ctx.createRadialGradient(this.x,this.y,0, this.x,this.y,14);
+          g.addColorStop(0, this.color);
+          g.addColorStop(1, 'rgba(249,211,111,0)');
+          ctx.fillStyle=g; ctx.globalAlpha=this.alpha*0.35;
+          ctx.beginPath(); ctx.arc(this.x,this.y,14,0,TAU); ctx.fill();
+          ctx.globalAlpha=1;
+        }
       }
-      tick();
+
+      class Comet {
+        constructor(){
+          this.x = Math.random()*innerWidth*0.6 + innerWidth*0.2;
+          this.y = rand(40, innerHeight*0.35);
+          const dir = Math.random()<0.5 ? -1 : 1;
+          this.vx = dir * rand(2.2, 3.4);
+          this.vy = rand(0.4, 1.0);
+          this.len = 14;
+          this.life = rand(800, 1300);
+          this.age = 0;
+          this.color = pick(golds);
+          this.path = [];
+        }
+        step(dt){
+          this.age += dt;
+          this.x += this.vx;
+          this.y += this.vy;
+          this.path.push([this.x,this.y]);
+          if(this.path.length>this.len) this.path.shift();
+          return this.age < this.life && this.x>-40 && this.x<innerWidth+40;
+        }
+        draw(ctx){
+          // comet tail
+          for(let i=0;i<this.path.length-1;i++){
+            const a = (i+1)/this.path.length;
+            ctx.strokeStyle = this.color;
+            ctx.globalAlpha = a*0.45;
+            ctx.lineWidth = 2.2*a;
+            const p0=this.path[i], p1=this.path[i+1];
+            ctx.beginPath(); ctx.moveTo(p0[0],p0[1]); ctx.lineTo(p1[0],p1[1]); ctx.stroke();
+          }
+          // head
+          ctx.globalAlpha=0.9; ctx.fillStyle=this.color;
+          ctx.beginPath(); ctx.arc(this.x,this.y,2.4,0,TAU); ctx.fill();
+          ctx.globalAlpha=1;
+        }
+      }
+
+      class Firework {
+        constructor(){
+          this.cx = rand(60, innerWidth-60);
+          this.cy = rand(innerHeight*0.22, innerHeight*0.5);
+          this.color = pick(golds);
+          this.particles=[];
+          this.rings = (Math.random()<0.35); // sometimes draw double ring
+          this.spawn();
+        }
+        spawn(){
+          const base = 95 + (Math.random()*35|0);
+          const ringFactor = this.rings ? 0.75 : 1;
+          for(let i=0;i<base;i++){
+            const angle = (i/base)*TAU + Math.random()*0.03;
+            const speed = rand(1.6, 2.7) * ringFactor;
+            const life = rand(900, 1400);
+            const thick = rand(1.1, 1.8);
+            this.particles.push(new Spark(this.cx,this.cy,angle,speed,life,this.color,thick));
+          }
+          // inner sparkle
+          for(let i=0;i<26;i++){
+            const a = Math.random()*TAU;
+            const s = rand(0.8, 1.6);
+            this.particles.push(new Spark(this.cx,this.cy,a,s,rand(650,900),pick(golds),1));
+          }
+        }
+        step(dt){
+          this.particles = this.particles.filter(p=>p.step(dt));
+          return this.particles.length>0;
+        }
+        draw(ctx){ this.particles.forEach(p=>p.draw(ctx)); }
+      }
+
+      // Scene
+      let fireworks = [];
+      let comets = [];
+      let last = performance.now();
+      let spawnTimer = 0, cometTimer = 0;
+
+      function drawBokeh(){
+        for(const b of bokeh){
+          b.x += Math.sin((performance.now()+b.r*50)/3000)*0.05;
+          b.y += Math.cos((performance.now()+b.r*80)/3500)*0.03;
+          ctx.globalAlpha = b.a;
+          const g = ctx.createRadialGradient(b.x,b.y,0, b.x,b.y,b.r);
+          g.addColorStop(0,'rgba(255,235,175,0.35)');
+          g.addColorStop(1,'rgba(255,235,175,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,TAU); ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+      }
+
+      function loop(now){
+        const dt = now - last; last = now;
+        spawnTimer += dt; cometTimer += dt;
+
+        // spawn fireworks less frequently for "premium" feel
+        const maxFW = innerWidth < 480 ? 4 : 6;
+        if (spawnTimer > rand(600, 1100) && fireworks.length < maxFW){
+          fireworks.push(new Firework());
+          spawnTimer = 0;
+        }
+        // occasional comet
+        if (cometTimer > rand(1800, 3000) && comets.length < 2){
+          comets.push(new Comet());
+          cometTimer = 0;
+        }
+
+        // clear
+        ctx.clearRect(0,0, c.width/DPR, c.height/DPR);
+
+        // subtle vignette/bokeh
+        drawBokeh();
+
+        // draw/deduce
+        fireworks = fireworks.filter(f=>{ f.draw(ctx); return f.step(dt); });
+        comets = comets.filter(cm=>{ cm.draw(ctx); return cm.step(dt); });
+
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      // Optional: tap to burst at pointer
+      c.addEventListener('pointerdown', (e)=>{
+        const rect = c.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const fw = new Firework();
+        fw.cx = x; fw.cy = y;
+        fw.particles = []; fw.spawn();
+        fireworks.push(fw);
+      }, { passive:true });
     })();
     /* ========= actions ============ */
     const btnWA = $("#btnWhatsApp");
@@ -412,7 +600,7 @@ Map: https://maps.app.goo.gl/puTAt7TPA2TCzvTK7`,
       addEventListener('mousedown',()=>mouse=true);
       addEventListener('keydown',()=>mouse=false);
       document.body.addEventListener('focusin', e=>{
-        if(!mouse) e.target.style.outline='2px solid #f9d36f';
+        if(!mouse) e.target.style.outline = e.target.id === 'btnWhatsApp' ? '2px solid #25D366' : '2px solid #f9d36f';
       });
       document.body.addEventListener('focusout', e=>{ e.target.style.outline='none'; });
     })();
