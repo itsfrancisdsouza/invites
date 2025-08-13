@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#0b57d0">
+  <meta name="theme-color" content="#f9d36f">
   <title>Shanuzz Grand Opening – Pune</title>
   
   <!-- Preload critical assets -->
@@ -235,8 +235,8 @@
       </div>
 
       <div class="cta">
-          <button class="btn btn-primary" id="btnWhatsApp">🟢 Share on WhatsApp</button>
-          <button class="btn btn-outline" id="btnCalendar">🗓️ Add to Calendar</button>
+          <button class="btn btn-primary" id="btnWhatsApp" aria-label="Share this invite on WhatsApp">🟢 Share on WhatsApp</button>
+          <button class="btn btn-outline" id="btnCalendar" aria-label="Add this event to your calendar">🗓️ Add to Calendar</button>
         </div>
 
         <p class="muted center">Tap Share to invite friends. Works best on mobile WhatsApp.</p>
@@ -280,7 +280,7 @@
       startISO: '2025-08-24T12:00:00+05:30',
       endISO:   '2025-08-24T15:00:00+05:30',
       venueName: 'Sky View Co‑Op Housing Soc Ltd.',
-      address: 'Office No.107, opp. Nandan Pro Biz, Laxman Nagar, Balewadi, Pune 411045',
+      address: 'Sky View Co‑Op Housing Soc Ltd., office No.107, opp. Nandan Pro Biz, Laxman Nagar, Balewadi, Pune 411045',
       mapsQuery: 'Sky View Co-Op Housing Soc Ltd Office 107 Nandan Pro Biz Balewadi Pune 411045',
       whatsappText: `You're invited! 🎉
 
@@ -320,7 +320,7 @@ See you there!`,
       const c = $("#confetti"); const ctx=c.getContext('2d');
       const DPR = Math.max(1, Math.min(2, window.devicePixelRatio||1));
       function size(){ c.width = innerWidth*DPR; c.height = innerHeight*DPR; }
-      size(); addEventListener('resize', size);
+      size(); addEventListener('resize', size); addEventListener('orientationchange', size);
       const N = 140, parts=[];
       for(let i=0;i<N;i++){
         parts.push({
@@ -391,7 +391,7 @@ Map: https://www.google.com/maps?q=${encodeURIComponent(INVITE.mapsQuery)}`);
       addEventListener('mousedown',()=>mouse=true);
       addEventListener('keydown',()=>mouse=false);
       document.body.addEventListener('focusin', e=>{
-        if(!mouse) e.target.style.outline='2px solid #60a5fa';
+        if(!mouse) e.target.style.outline='2px solid #f9d36f';
       });
       document.body.addEventListener('focusout', e=>{ e.target.style.outline='none'; });
     })();
