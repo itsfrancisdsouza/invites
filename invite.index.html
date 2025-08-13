@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0b57d0">
+  <title>Shanuzz Grand Opening – Pune</title>
+  
+  <!-- Preload critical assets -->
+  <!-- <link rel="preload" href="/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin> -->
+  <!-- <link rel="preload" href="/icons/sprite.svg" as="image" type="image/svg+xml"> -->
+  <style>
+    /* Font loading (uncomment when adding local fonts) */
+    /* @font-face {
+      font-family: 'InterVar';
+      src: url('/fonts/Inter-Variable.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    } */
+    
+          :root{
+        /* 8-point spacing system */
+        --space-1: 8px;
+        --space-2: 16px;
+        --space-3: 24px;
+        --space-4: 32px;
+        --space-5: 40px;
+        --space-6: 48px;
+        --space-8: 64px;
+        --space-12: 96px;
+        
+        /* Fluid type and spacing */
+        --fs-display: clamp(28px, 6.2vw, 44px);
+        --fs-h1: clamp(22px, 5vw, 32px);
+        --fs-h2: clamp(16px, 3.6vw, 22px);
+        --fs-body: clamp(14px, 2.6vw, 17px);
+        --radius: 18px;
+
+      /* Brand: Gold palette */
+      --brand: #f9d36f;      /* warm gold */
+      --brand-2: #e9c561;    /* darker gold accent */
+      --ink: #0f172a;
+      --ink-2:#334155;
+      --bg: #0a0c10;
+      --card: rgba(255,255,255,0.08);
+      --stroke: rgba(255,255,255,0.16);
+      --glow: 0 20px 80px rgba(249,211,111,.35); /* gold glow */
+    }
+    html,body{height:100%;background: radial-gradient(1200px 700px at 70% -10%, var(--brand) 0%, transparent 40%), #0a0c10;}
+    body{
+      margin:0;
+      color:#cfd6e6; /* muted base text */
+      font: 400 var(--fs-body)/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      display:flex; align-items:center; justify-content:center;
+      padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+    }
+
+    /* Parallax hero background */
+    .hero{
+      position:fixed; inset:-10% -10% auto -10%; height:60vh; pointer-events:none; z-index:0;
+      background:
+        radial-gradient(60% 60% at 80% 10%, rgba(233,197,97,.18), transparent 60%),
+        radial-gradient(80% 70% at 20% -10%, rgba(249,211,111,.22), transparent 50%);
+      filter:saturate(1.15);
+      transform:translate3d(0,0,0);
+      will-change:transform;
+    }
+
+    /* Confetti */
+    .confetti{position:fixed; inset:0; pointer-events:none; z-index:2}
+
+    /* Card */
+    .invite{
+      position:relative; z-index:1;
+      width:min(94vw, 720px);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.06));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--glow);
+      backdrop-filter: blur(10px) saturate(120%);
+      overflow:hidden;
+    }
+    .banner{
+      position:relative;
+      padding: var(--space-4);
+      background:
+        linear-gradient(180deg, rgba(249,211,111,.35), rgba(249,211,111,.12)),
+        url('') center/cover no-repeat;
+      border-bottom:1px solid var(--stroke);
+    }
+    .badge{
+      display:inline-flex; gap: var(--space-1); align-items:center;
+      padding:6px var(--space-2); border-radius:999px;
+      background: rgba(255, 224, 130, .20); /* warm gold haze */
+      backdrop-filter: blur(6px);
+      font-weight:700; letter-spacing:.25px;
+    }
+    .title{ font-weight:900; font-size: var(--fs-display); line-height: 1; margin: var(--space-2) 0 var(--space-1); }
+    .subtitle{ font-size: var(--fs-h2); line-height: 1.25; color:#c8d2e6; margin:0 0 var(--space-2); }
+
+    .content{ padding: var(--space-4) var(--space-3); display:grid; gap: var(--space-4); }
+    .info{
+      display:grid; gap: var(--space-2);
+      grid-template-columns: 1fr;
+    }
+    .row{ display:flex; gap: var(--space-2); align-items:flex-start; }
+    .icon{
+      width:36px; height:36px; border-radius:10px;
+      display:inline-grid; place-items:center;
+      background: rgba(255,255,255,.12); flex:0 0 36px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
+    }
+    .col h3{ margin:0 0 var(--space-1) 0; font-size: var(--fs-h2); line-height: 1.2; }
+    .col p{ margin:0; color:#cfd6e6; line-height: 1.5; }
+
+    .cta{
+      display:grid; gap: var(--space-2);
+      grid-template-columns: 1fr;
+    }
+    .btn{
+      appearance:none; border:0; cursor:pointer;
+      border-radius: 14px;
+      padding: 14px var(--space-2);
+      font-weight:800; letter-spacing:.3px;
+      display:flex; align-items:center; justify-content:center; gap: var(--space-2);
+      min-height:48px; transition:.2s transform,.3s box-shadow,.3s background;
+      text-decoration:none; color:#fff;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn-primary{ background: linear-gradient(180deg, #f9d36f, #e9c561); box-shadow: 0 8px 24px rgba(249,211,111,.35); }
+    .btn-primary:hover{ filter: brightness(1.06); }
+    .btn-outline{ background: transparent; box-shadow: inset 0 0 0 2px rgba(255,255,255,.2); }
+    .btn-outline:hover{ background: rgba(255,255,255,.08); }
+
+    .chips{ display:flex; flex-wrap:wrap; gap: var(--space-1); }
+    .chip{
+      font-size: .92em; padding:6px var(--space-2); border-radius:999px;
+      background: rgba(255,255,255,.10); color:#e6eefc; border:1px solid var(--stroke);
+    }
+
+    /* Footer ribbon */
+    .ribbon{
+      padding: var(--space-2) var(--space-3);
+      border-top:1px dashed rgba(255,255,255,.18);
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap: var(--space-2); color:#c7d0e2;
+      font-size:.95em;
+    }
+
+    /* Make everything fit all devices */
+    @media (min-width: 560px){
+      .info{ grid-template-columns: 1fr 1fr; }
+      .cta{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px){
+      .content{ grid-template-columns: 1.2fr .8fr; align-items:start; }
+      .cta{ grid-template-columns: 1fr; }
+      .section-gap{ margin-top: var(--space-8); } /* use between big sections */
+    }
+
+    /* Utilities */
+    .muted{ color:#c7d0e0; }
+    .strong{ font-weight:800; }
+    .mono{ font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    .center{ text-align:center; }
+    .divider{ height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent); margin:6px 0; }
+
+    /* Toast */
+    .toast{
+      position:fixed; left:50%; bottom: calc(var(--space-2) + env(safe-area-inset-bottom));
+      transform: translateX(-50%) translateY(20px);
+      opacity:0; transition:.35s; z-index:5;
+      background: #0b1220; border:1px solid rgba(249,211,111,.35);
+      color:#dfe6f7; padding: var(--space-2) var(--space-3); border-radius:12px; box-shadow: var(--glow);
+    }
+    .toast.show{ transform: translateX(-50%) translateY(0); opacity:1; }
+
+    /* Respect reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      /* Soften or disable animations/transitions */
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+      /* Keep hero static */
+      .hero { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero" id="hero"></div>
+  <canvas class="confetti" id="confetti"></canvas>
+  
+  <div class="invite">
+    <div class="banner">
+      <div class="badge">✂️ Grand Opening - Pune</div>
+      <h1 class="title">Shanuzz is now in Pune</h1>
+      <p class="subtitle">Join the celebration in Balewadi — food, fun, and exclusive launch offers.</p>
+      
+      <div class="chips">
+        <span class="chip">Giveaways</span>
+        <span class="chip">Live demos</span>
+        <span class="chip">Exclusive discounts</span>
+        </div>
+      </div>
+      
+    <div class="content">
+      <div class="info">
+        <div class="row">
+          <div class="icon">📅</div>
+          <div class="col">
+            <h3>Saturday, Aug 24, 2025</h3>
+            <p>12:00 PM – 3:00 PM IST</p>
+        </div>
+        </div>
+        
+        <div class="row">
+          <div class="icon">📍</div>
+          <div class="col">
+            <h3> <a href="https://maps.app.goo.gl/puTAt7TPA2TCzvTK7" target="_blank" rel="noopener noreferrer" style="color:#f9d36f; text-decoration:underline;"> Sky View Co‑Op Housing Soc Ltd. </a> </h3>
+            <p>Office No.107, opp. Nandan Pro Biz, Laxman Nagar, Balewadi, Pune 411045</p>
+        </div>
+        </div>
+      </div>
+
+      <div class="info">
+        <div class="row">
+          <div class="icon">🎉</div>
+          <div class="col">
+            <h3>What to expect</h3>
+            <p>Be the first to explore our services, collect coupons, and enjoy unlimited snacks & drinks.</p>
+        </div>
+      </div>
+
+      <div class="cta">
+          <button class="btn btn-primary" id="btnWhatsApp">🟢 Share on WhatsApp</button>
+          <button class="btn btn-outline" id="btnCalendar">🗓️ Add to Calendar</button>
+        </div>
+
+        <p class="muted center">Tap Share to invite friends. Works best on mobile WhatsApp.</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="row">
+        <div class="icon">🎁</div>
+        <div class="col">
+          <h3>Perks</h3>
+          <p>Early-bird coupons - Spin-the-wheel - Launch-only combos</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="icon">✨</div>
+        <div class="col">
+          <h3>Dress code</h3>
+          <p>Casual chic — cameras will love it.</p>
+      </div>
+    </div>
+  </div>
+
+    <div class="ribbon">
+      <span>Questions? Call +91 94584 66166</span>
+      <a class="strong" href="https://www.instagram.com/shanuzzsalon.balewadi" target="_blank" rel="noopener noreferrer" style="color:#f9d36f; text-decoration:none;">
+        @shanuzzsalon.balewadi
+      </a>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    /* ========= CONFIG: edit these ============ */
+    const INVITE = {
+      brand: 'Shanuzz',
+      title: 'Shanuzz is now in Pune',
+      dateText: 'Saturday, Aug 24, 2025',
+      startISO: '2025-08-24T12:00:00+05:30',
+      endISO:   '2025-08-24T15:00:00+05:30',
+      venueName: 'Sky View Co‑Op Housing Soc Ltd.',
+      address: 'Office No.107, opp. Nandan Pro Biz, Laxman Nagar, Balewadi, Pune 411045',
+      mapsQuery: 'Sky View Co-Op Housing Soc Ltd Office 107 Nandan Pro Biz Balewadi Pune 411045',
+      whatsappText: `You're invited! 🎉
+
+Shanuzz is now in Pune — Grand Opening
+Date: Saturday, Aug 24, 12–3 PM
+Venue: Sky View Co‑Op Housing Soc Ltd., Balewadi
+
+Perks: coupons, giveaways, snacks & drinks.
+See you there!`,
+    };
+    /* ========= helpers ============ */
+    const $ = (s)=>document.querySelector(s);
+    function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+    function toICS(dt){ // returns YYYYMMDDTHHMMSSZ (approx) converting local to UTC
+      const d=new Date(dt);
+      return d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z/,'Z');
+    }
+    
+    /* Check for reduced motion preference */
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    /* ========= parallax hero ============ */
+    const hero = $("#hero");
+    if (!reduceMotion) {
+      window.addEventListener('scroll', ()=> {
+        const y = Math.min(60, window.scrollY*0.06);
+        hero.style.transform = `translate3d(0, ${y}px, 0)`;
+      });
+      } else {
+      hero.style.transform = 'none';
+    }
+    
+    /* ========= confetti ============ */
+    (function confettiBurst(){
+      if (reduceMotion) return; // skip entirely if reduced motion is preferred
+      
+      const c = $("#confetti"); const ctx=c.getContext('2d');
+      const DPR = Math.max(1, Math.min(2, window.devicePixelRatio||1));
+      function size(){ c.width = innerWidth*DPR; c.height = innerHeight*DPR; }
+      size(); addEventListener('resize', size);
+      const N = 140, parts=[];
+      for(let i=0;i<N;i++){
+        parts.push({
+          x: Math.random()*c.width,
+          y: Math.random()*c.height,
+          r: Math.random()*Math.PI*2,
+          s: Math.random()*3+2,
+          sp: Math.random()*2+1,
+          col: ['#f1c40f','#f39c12','#ffd700','#e67e22','#fff3b0'][Math.floor(Math.random()*5)]
+        });
+      }
+      function tick(){
+        ctx.clearRect(0,0,c.width,c.height);
+        for(let p of parts){
+          p.y += p.sp;
+          p.r += 0.02;
+          if(p.y>c.height+40) { p.y=-20; p.x=Math.random()*c.width; }
+          ctx.save();
+          ctx.translate(p.x,p.y); ctx.rotate(p.r);
+          ctx.fillStyle = p.col;
+          ctx.fillRect(-p.s/2, -p.s/2, p.s, p.s*0.6);
+          ctx.restore();
+        }
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
+    /* ========= actions ============ */
+    const btnWA = $("#btnWhatsApp");
+    btnWA.addEventListener('click',(e)=>{
+      e.preventDefault();
+      // Build wa.me link (mobile-first, works on web/desktop too per WhatsApp docs)
+      const text = encodeURIComponent(INVITE.whatsappText + `
+
+Map: https://www.google.com/maps?q=${encodeURIComponent(INVITE.mapsQuery)}`);
+      const wa = `https://wa.me/?text=${text}`; // no number → user chooses contact
+      location.href = wa; // top-level navigation as recommended
+    });
+
+    const btnCal = $("#btnCalendar");
+    btnCal.addEventListener('click',(e)=>{
+      e.preventDefault();
+      // iCalendar inline data (download)
+      const ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Shanuzz Invite//EN',
+        'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        `DTSTART:${toICS(INVITE.startISO)}`,
+        `DTEND:${toICS(INVITE.endISO)}`,
+        `SUMMARY:${INVITE.title}`,
+        `LOCATION:${INVITE.venueName}, ${INVITE.address}`,
+        'DESCRIPTION:Grand Opening with giveaways, coupons, snacks & drinks.',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+      const blob = new Blob([ics], {type:'text/calendar'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url; a.download='shanuzz-invite.ics';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      toast('Calendar file downloaded');
+    });
+
+    /* Accessibility: focus outlines for keyboard users */
+    (function(){
+      let mouse = false;
+      addEventListener('mousedown',()=>mouse=true);
+      addEventListener('keydown',()=>mouse=false);
+      document.body.addEventListener('focusin', e=>{
+        if(!mouse) e.target.style.outline='2px solid #60a5fa';
+      });
+      document.body.addEventListener('focusout', e=>{ e.target.style.outline='none'; });
+    })();
+  </script>
+</body>
+</html>
