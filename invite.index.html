@@ -239,7 +239,7 @@
           <div class="row">
             <div class="icon">📍</div>
             <div class="col">
-              <h3> <a href="https://maps.app.goo.gl/puTAt7TPA2TCzvTK7" target="_blank" rel="noopener noreferrer" style="color:#f9d36f; text-decoration:underline;"> Sky View Co‑Op Housing Soc Ltd. </a> </h3>
+              <h3> <a href="https://maps.app.goo.gl/puTAt7TPA2TCzvTK7" target="_blank" rel="noopener noreferrer" style="color:#f9d36f; text-decoration:underline;"> Shanuzz Salon Balewadi, Pune </a> </h3>
               <p>Office No.107, opp. Nandan Pro Biz, Laxman Nagar, Balewadi, Pune 411045</p>
           </div>
           </div>
@@ -300,17 +300,18 @@
       dateText: 'Saturday, Aug 24, 2025',
       startISO: '2025-08-24T12:00:00+05:30',
       endISO:   '2025-08-24T15:00:00+05:30',
-      venueName: 'Sky View Co‑Op Housing Soc Ltd.',
+      venueName: 'Shanuzz Salon Balewadi, Pune',
       address: 'Sky View Co‑Op Housing Soc Ltd., office No.107, opp. Nandan Pro Biz, Laxman Nagar, Balewadi, Pune 411045',
-      mapsQuery: 'Sky View Co-Op Housing Soc Ltd Office 107 Nandan Pro Biz Balewadi Pune 411045',
       whatsappText: `You're invited! 🎉
 
 Shanuzz is now in Pune — Grand Opening
 Date: Saturday, Aug 24, 12–3 PM
-Venue: Sky View Co‑Op Housing Soc Ltd., Balewadi
+Venue: Shanuzz Salon Balewadi, Pune
 
 Perks: coupons, giveaways, snacks & drinks.
-See you there!`,
+See you there!
+
+Map: https://maps.app.goo.gl/puTAt7TPA2TCzvTK7`,
     };
     /* ========= helpers ============ */
     const $ = (s)=>document.querySelector(s);
@@ -374,9 +375,7 @@ See you there!`,
     btnWA.addEventListener('click',(e)=>{
       e.preventDefault();
       // Build wa.me link (mobile-first, works on web/desktop too per WhatsApp docs)
-      const text = encodeURIComponent(INVITE.whatsappText + `
-
-Map: https://www.google.com/maps?q=${encodeURIComponent(INVITE.mapsQuery)}`);
+      const text = encodeURIComponent(INVITE.whatsappText);
       const wa = `https://wa.me/?text=${text}`; // no number → user chooses contact
       location.href = wa; // top-level navigation as recommended
     });
