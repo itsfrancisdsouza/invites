@@ -150,6 +150,14 @@
     }
     .btn-whatsapp:hover{ filter: brightness(1.06); }
 
+    /* Instagram gradient CTA */
+    .btn-instagram{
+      background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      box-shadow: 0 8px 24px rgba(220,39,67,.35);
+      color:#fff;
+    }
+    .btn-instagram:hover{ filter: brightness(1.06); }
+
     .chips{ display:flex; flex-wrap:wrap; gap: var(--space-1); }
     .chip{
       font-size: .92em; padding:6px var(--space-2); border-radius:999px;
@@ -164,6 +172,7 @@
       font-size:.95em;
       flex: 0 0 auto;
     }
+    .ribbon a:hover { text-decoration: underline; }
 
     /* Make everything fit all devices */
     @media (min-width: 560px){
@@ -229,8 +238,8 @@
       
       <div class="chips">
         <span class="chip">Giveaways</span>
-        <span class="chip">Live demos</span>
         <span class="chip">Exclusive discounts</span>
+        <span class="chip">Much More</span>
         </div>
       </div>
       
@@ -240,8 +249,8 @@
           <div class="row">
             <div class="icon">📅</div>
             <div class="col">
-              <h3>Saturday, Aug 24, 2025</h3>
-              <p>12:00 PM – 3:00 PM IST</p>
+              <h3>Wednesday, Sep 03, 2025</h3>
+              <p>04:00 PM – 07:00 PM IST</p>
           </div>
           </div>
           
@@ -271,7 +280,20 @@
               </svg>
               <span>Share on WhatsApp</span>
             </button>
+            <button class="btn btn-instagram" id="btnInstagram" aria-label="Follow us on Instagram">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" style="display:block">
+                <path fill="#fff" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>Follow Us</span>
+            </button>
             <button class="btn btn-outline" id="btnCalendar" aria-label="Add this event to your calendar">🗓️ Add to Calendar</button>
+            <button class="btn btn-whatsapp" id="btnRSVP" aria-label="RSVP on WhatsApp">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" style="display:block">
+                <path fill="#fff" d="M.5 23.5l1.68-6.15A10.94 10.94 0 011.1 12C1.1 5.77 6.07.8 12.3.8S23.5 5.77 23.5 12 18.53 23.2 12.3 23.2c-1.8 0-3.5-.43-5.01-1.25L.5 23.5zm6.99-3.35c1.41.83 3.03 1.27 4.81 1.27 5.1 0 9.25-4.15 9.25-9.25S17.4 2.92 12.3 2.92 3.05 7.08 3.05 12.17c0 1.78.49 3.37 1.42 4.76l-.9 3.3 3.92-.08z"/>
+                <path fill="#fff" d="M16.87 13.22c-.2-.1-1.2-.6-1.39-.68-.19-.07-.33-.1-.47.1-.14.19-.54.68-.66.82-.12.14-.24.16-.44.06-.2-.1-.85-.31-1.62-.99-.6-.53-1-1.18-1.12-1.37-.12-.19-.01-.3.09-.4.09-.09.2-.24.3-.36.1-.12.14-.2.2-.34.07-.14.03-.26-.02-.37-.05-.1-.47-1.14-.64-1.56-.17-.41-.35-.36-.47-.37l-.4-.01c-.14 0-.36.05-.55.26-.19.2-.73.71-.73 1.72s.75 1.99.86 2.13c.11.14 1.47 2.25 3.56 3.16.5.22.88.35 1.19.45.5.16.95.14 1.31.08.4-.06 1.2-.49 1.37-.96.17-.47.17-.87.12-.96-.05-.09-.18-.14-.38-.24z"/>
+              </svg>
+              <span>RSVP on WhatsApp</span>
+            </button>
           </div>
 
           <p class="muted center">Tap Share to invite friends. Works best on mobile WhatsApp.</p>
@@ -298,7 +320,9 @@
   </div>
 
     <div class="ribbon">
-      <span>Questions? Call +91 94584 66166</span>
+      <a href="tel:+919458466166" class="strong" style="color:#f9d36f; text-decoration:none;">
+        Call +91 94584 66166
+      </a>
       <a class="strong" href="https://www.instagram.com/shanuzzsalon.balewadi" target="_blank" rel="noopener noreferrer" style="color:#f9d36f; text-decoration:none;">
         @shanuzzsalon.balewadi
       </a>
@@ -312,22 +336,43 @@
     const INVITE = {
       brand: 'Shanuzz',
       title: 'Shanuzz is now in Pune',
-      dateText: 'Saturday, Aug 24, 2025',
-      startISO: '2025-08-24T12:00:00+05:30',
-      endISO:   '2025-08-24T15:00:00+05:30',
+      dateText: 'Wednesday, Sep 03, 2025',
+      startISO: '2025-09-03T16:00:00+05:30',
+      endISO:   '2025-09-03T19:00:00+05:30',
       venueName: 'Shanuzz Salon Balewadi, Pune',
       address: 'Sky View Co‑Op Housing Soc Ltd., office No.107, opp. Nandan Pro Biz, Laxman Nagar, Balewadi, Pune 411045',
-      whatsappText: `You're invited! 🎉
+      whatsappText: `You're Invited! 🎉
 
-Shanuzz is now in Pune — Grand Opening
-Date: Saturday, Aug 24, 12–3 PM
+We're thrilled to announce the grand opening of Shanuzz's new branch in Pune!
+
+This milestone marks our expansion to bring exceptional salon services to the vibrant city of Pune, and we'd be delighted to have you join us on this exciting new venture.
+
+Grand Opening Details:
+📅 Date: Wednesday, September 3rd, 2025
+⏰ Time: 04:00 PM - 07:00 PM
+📍 Venue: Shanuzz Salon Balewadi, Pune
+
+Our team is committed to providing exceptional service and a warm welcome to all our clients.
+
+Special Perks: Exclusive coupons, exciting giveaways, complimentary snacks & refreshments
+
+📲 RSVP: https://www.shanuzz.com/invite
+📍 Location: https://maps.app.goo.gl/puTAt7TPA2TCzvTK7
+
+We can't wait to see you there!
+
+Warmest Regards,
+Team Shanuzz`,
+      rsvpWhatsAppText: `Hi! I'd like to RSVP for the Shanuzz Grand Opening in Pune! 🎉
+
+Event: Shanuzz Grand Opening - Pune
+Date: Wednesday, Sep 03, 2025
+Time: 04:00 PM – 07:00 PM IST
 Venue: Shanuzz Salon Balewadi, Pune
-Invite: https://www.shanuzz.com/invite
 
-Perks: coupons, giveaways, snacks & drinks.
-See you there!
+I'm excited to attend and would love to know more about the event details and any special arrangements needed.
 
-Map: https://maps.app.goo.gl/puTAt7TPA2TCzvTK7`,
+Looking forward to the celebration! ✨`,
     };
     /* ========= helpers ============ */
     const $ = (s)=>document.querySelector(s);
@@ -335,6 +380,42 @@ Map: https://maps.app.goo.gl/puTAt7TPA2TCzvTK7`,
     function toICS(dt){ // returns YYYYMMDDTHHMMSSZ (approx) converting local to UTC
       const d=new Date(dt);
       return d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z/,'Z');
+    }
+
+    // Calendar helpers
+    function toGoogleCalURL({title, startISO, endISO, location, details}) {
+      // Use UTC for Google link, URL-encoded
+      const s = new Date(startISO).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z/,'Z');
+      const e = new Date(endISO).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z/,'Z');
+      const params = new URLSearchParams({
+        action: 'TEMPLATE',
+        text: title,
+        dates: `${s}/${e}`,
+        details,
+        location
+      });
+      return `https://calendar.google.com/calendar/render?${params.toString()}`;
+    }
+
+    function downloadICS({title, startISO, endISO, location, details}) {
+      const ics = [
+        'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Shanuzz Invite//EN','CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        `DTSTART:${toICS(startISO)}`,
+        `DTEND:${toICS(endISO)}`,
+        `SUMMARY:${title}`,
+        `LOCATION:${location}`,
+        `DESCRIPTION:${details}`,
+        'END:VEVENT','END:VCALENDAR'
+      ].join('\r\n');
+      const blob = new Blob([ics], {type:'text/calendar'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url; a.download='shanuzz-invite.ics';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+
+    function isAppleDevice(){
+      return /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
     }
     
     /* Check for reduced motion preference */
@@ -569,29 +650,47 @@ Map: https://maps.app.goo.gl/puTAt7TPA2TCzvTK7`,
       location.href = wa; // top-level navigation as recommended
     });
 
+    const btnInstagram = $("#btnInstagram");
+    btnInstagram.addEventListener('click',(e)=>{
+      e.preventDefault();
+      // Open Instagram profile in new tab
+      const instagramUrl = 'https://www.instagram.com/shanuzzsalon.balewadi';
+      window.open(instagramUrl, '_blank', 'noopener,noreferrer');
+    });
+
+    const btnRSVP = $("#btnRSVP");
+    btnRSVP.addEventListener('click',(e)=>{
+      e.preventDefault();
+      // Build wa.me link for RSVP (mobile-first, works on web/desktop too)
+      const text = encodeURIComponent(INVITE.rsvpWhatsAppText);
+      const wa = `https://wa.me/919458466166?text=${text}`; // Direct to salon number
+      location.href = wa; // top-level navigation as recommended
+    });
+
     const btnCal = $("#btnCalendar");
     btnCal.addEventListener('click',(e)=>{
       e.preventDefault();
-      // iCalendar inline data (download)
-      const ics = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Shanuzz Invite//EN',
-        'CALSCALE:GREGORIAN',
-        'BEGIN:VEVENT',
-        `DTSTART:${toICS(INVITE.startISO)}`,
-        `DTEND:${toICS(INVITE.endISO)}`,
-        `SUMMARY:${INVITE.title}`,
-        `LOCATION:${INVITE.venueName}, ${INVITE.address}`,
-        'DESCRIPTION:Grand Opening with giveaways, coupons, snacks & drinks.',
-        'END:VEVENT',
-        'END:VCALENDAR'
-      ].join('\r\n');
-      const blob = new Blob([ics], {type:'text/calendar'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href=url; a.download='shanuzz-invite.ics';
-      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-      toast('Calendar file downloaded');
+      const payload = {
+        title: INVITE.title,
+        startISO: INVITE.startISO,
+        endISO: INVITE.endISO,
+        location: `${INVITE.venueName}, ${INVITE.address}`,
+        details: 'Grand Opening with giveaways, coupons, snacks & drinks.'
+      };
+
+      if (isAppleDevice()) {
+        downloadICS(payload);
+        toast('Calendar file downloaded');
+        return;
+      }
+
+      const url = toGoogleCalURL(payload);
+      const w = window.open(url, '_blank', 'noopener,noreferrer');
+      if (!w) {
+        // Fallback if blocked
+        downloadICS(payload);
+        toast('Calendar file downloaded (popup blocked)');
+      }
     });
 
     /* Accessibility: focus outlines for keyboard users */
@@ -600,7 +699,7 @@ Map: https://maps.app.goo.gl/puTAt7TPA2TCzvTK7`,
       addEventListener('mousedown',()=>mouse=true);
       addEventListener('keydown',()=>mouse=false);
       document.body.addEventListener('focusin', e=>{
-        if(!mouse) e.target.style.outline = e.target.id === 'btnWhatsApp' ? '2px solid #25D366' : '2px solid #f9d36f';
+        if(!mouse) e.target.style.outline = e.target.id === 'btnWhatsApp' || e.target.id === 'btnRSVP' ? '2px solid #25D366' : '2px solid #f9d36f';
       });
       document.body.addEventListener('focusout', e=>{ e.target.style.outline='none'; });
     })();
